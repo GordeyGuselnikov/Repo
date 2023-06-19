@@ -19,3 +19,15 @@ struct Owner: Decodable {
     let html_url: URL
     let type: String
 }
+
+enum Link {
+    case repoURL
+    
+    var url: URL {
+        switch self {
+            
+        case .repoURL:
+            return URL(string: "https://api.github.com/repositories")!
+        }
+    }
+}

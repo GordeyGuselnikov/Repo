@@ -7,7 +7,8 @@
 
 import UIKit
 
-private let repoURL = "https://api.github.com/repositories"
+//private let repoURL = "https://api.github.com/repositories"
+
 
 enum Alert {
     case success
@@ -53,8 +54,8 @@ final class ViewController: UIViewController {
 // MARK: - Networking
 extension ViewController {
     private func fetchRepos() {
-        guard let url = URL(string: repoURL) else { return }
-        URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
+//        guard let url = URL(string: repoURL) else { return }
+        URLSession.shared.dataTask(with: Link.repoURL.url) { [weak self] data, _, error in
             guard let data else {
                 print(error?.localizedDescription ?? "No error description")
                 return

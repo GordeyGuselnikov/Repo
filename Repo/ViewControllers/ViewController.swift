@@ -55,7 +55,7 @@ final class ViewController: UIViewController {
 extension ViewController {
     private func fetchRepos() {
 //        guard let url = URL(string: repoURL) else { return }
-        URLSession.shared.dataTask(with: Link.repoURL.url) { [weak self] data, _, error in
+        URLSession.shared.dataTask(with: Link.repositoriesURL.url) { [weak self] data, _, error in
             guard let data else {
                 print(error?.localizedDescription ?? "No error description")
                 return
@@ -63,7 +63,7 @@ extension ViewController {
             
             do {
                 let decoder = JSONDecoder()
-                let repos = try decoder.decode([Repo].self, from: data)
+                let repos = try decoder.decode([Repository].self, from: data)
                 print(repos)
                 self?.showAlert(withStatus: .success)
             } catch {

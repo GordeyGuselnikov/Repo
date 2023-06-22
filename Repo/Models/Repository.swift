@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Repo: Decodable {
+struct Repository: Decodable {
     let name: String
     let full_name: String
     let owner: Owner
@@ -18,16 +18,4 @@ struct Owner: Decodable {
     let avatar_url: URL
     let html_url: URL
     let type: String
-}
-
-enum Link {
-    case repoURL
-    
-    var url: URL {
-        switch self {
-            
-        case .repoURL:
-            return URL(string: "https://api.github.com/repositories")!
-        }
-    }
 }

@@ -11,6 +11,12 @@ struct Repository: Decodable {
     let name: String
     let full_name: String
     let owner: Owner
+    
+//    enum CodingKeys: String, CodingKey {
+//        case name = "name"
+//        case fullName = "full_name"
+//        case owner = "owner"
+//    }
 }
 
 struct Owner: Decodable {
@@ -18,4 +24,11 @@ struct Owner: Decodable {
     let avatar_url: URL
     let html_url: URL
     let type: String
+    
+//    enum CodingKeys: String, CodingKey {
+//        case login = "login"
+//        case avatarURL = "avatar_url"
+//        case htmlURL = "html_url"
+//        case type = "type"
+//    }
 }

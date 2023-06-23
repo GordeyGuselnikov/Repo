@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Repository: Codable {
+struct Repository: Decodable {
     let name: String
     let fullName: String
     let owner: Owner
@@ -19,7 +19,7 @@ struct Repository: Codable {
     }
 }
 
-struct Owner: Codable {
+struct Owner: Decodable {
     let login: String
     let avatarURL: URL
     let htmlURL: URL

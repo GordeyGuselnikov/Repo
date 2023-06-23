@@ -7,28 +7,28 @@
 
 import Foundation
 
-struct Repository: Decodable {
+struct Repository: Codable {
     let name: String
-    let full_name: String
+    let fullName: String
     let owner: Owner
     
-//    enum CodingKeys: String, CodingKey {
-//        case name = "name"
-//        case fullName = "full_name"
-//        case owner = "owner"
-//    }
+    enum CodingKeys: String, CodingKey {
+        case name = "name"
+        case fullName = "full_name"
+        case owner = "owner"
+    }
 }
 
-struct Owner: Decodable {
+struct Owner: Codable {
     let login: String
-    let avatar_url: URL
-    let html_url: URL
+    let avatarURL: URL
+    let htmlURL: URL
     let type: String
     
-//    enum CodingKeys: String, CodingKey {
-//        case login = "login"
-//        case avatarURL = "avatar_url"
-//        case htmlURL = "html_url"
-//        case type = "type"
-//    }
+    enum CodingKeys: String, CodingKey {
+        case login = "login"
+        case avatarURL = "avatar_url"
+        case htmlURL = "html_url"
+        case type = "type"
+    }
 }

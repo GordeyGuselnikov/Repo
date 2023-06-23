@@ -62,9 +62,9 @@ final class RepositoryTableViewController: UITableViewController {
         content.secondaryText = repository.owner.login
         content.image = UIImage(systemName: "bicycle")
         
-        print(repository.owner.avatar_url)
+        print(repository.owner.avatarURL)
         
-        networkManager.fetchImageData(from: repository.owner.avatar_url) { [weak self] result in
+        networkManager.fetchImageData(from: repository.owner.avatarURL) { [weak self] result in
             switch result {
             case .success(let imageData):
                 //TODO: - Не работает content.image
@@ -116,7 +116,7 @@ extension RepositoryTableViewController {
                 self?.tableView.reloadData()
             case .failure(let error):
                 print(error)
-                //self?.showAlert(withStatus: .failed)
+                self?.showAlert(withStatus: .failed)
             }
         }
     }

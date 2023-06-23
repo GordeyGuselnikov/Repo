@@ -42,6 +42,8 @@ final class RepositoryTableViewController: UITableViewController {
         tableView.rowHeight = 80
         
         fetchRepositories()
+        
+        print("Количество репозиториев: \(repositories.count)") //0
     }
 
     // MARK: - Table view data source
@@ -67,6 +69,7 @@ final class RepositoryTableViewController: UITableViewController {
             case .success(let imageData):
                 //TODO: - Не работает content.image
                 content.image = UIImage(data: imageData)
+                cell.contentConfiguration = content
             case .failure(let error):
                 print(error)
                 self?.showAlert(withStatus: .failed)
@@ -106,15 +109,14 @@ extension RepositoryTableViewController {
         networkManager.fetch([Repository].self, from: Link.repositoriesURL.url) { [weak self] result in
             switch result {
             case .success(let repos):
+                print(repos.count)
                 print(repos)
-                self?.showAlert(withStatus: .success)
-                DispatchQueue.main.async { [unowned self] in
-                    self?.repositories = repos
-                    self?.tableView.reloadData()
-                }
+                //self?.showAlert(withStatus: .success)
+                self?.repositories = repos
+                self?.tableView.reloadData()
             case .failure(let error):
                 print(error)
-                self?.showAlert(withStatus: .failed)
+                //self?.showAlert(withStatus: .failed)
             }
         }
     }
